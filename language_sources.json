@@ -1,0 +1,58 @@
+{
+  "javascript": {
+    "default": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "ES5": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction",
+    "ES6": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
+    "Node.js": "https://nodejs.org/en/docs/",
+    "React": "https://reactjs.org/docs/getting-started.html",
+    "Vue.js": "https://vuejs.org/v2/guide/",
+    "Angular": "https://angular.io/docs",
+    "Express": "https://expressjs.com/en/starter/installing.html",
+    "Next.js": "https://nextjs.org/docs"
+  },
+  "python": {
+    "default": "https://docs.python.org/3/",
+    "Python 2": "https://docs.python.org/2/",
+    "Flask": "https://flask.palletsprojects.com/en/2.0.x/",
+    "Django": "https://www.djangoproject.com/start/",
+    "FastAPI": "https://fastapi.tiangolo.com/",
+    "Pyramid": "https://trypyramid.com/",
+    "Tornado": "https://www.tornadoweb.org/en/stable/"
+  },
+  "java": {
+    "default": "https://docs.oracle.com/en/java/",
+    "Spring": "https://spring.io/guides",
+    "Hibernate": "https://hibernate.org/orm/documentation/",
+    "JavaFX": "https://openjfx.io/",
+    "Dropwizard": "https://www.dropwizard.io/en/latest/",
+    "JUnit": "https://junit.org"
+  },
+  "csharp": {
+    "default": "https://docs.microsoft.com/en-us/dotnet/csharp/",
+    "ASP.NET Core": "https://docs.microsoft.com/en-us/aspnet/core/",
+    "Xamarin": "https://docs.microsoft.com/en-us/xamarin/",
+    "Blazor": "https://docs.microsoft.com/en-us/aspnet/core/blazor/",
+    "Unity": "https://docs.unity3d.com/Manual/"
+  },
+  "ruby": {
+    "default": "https://www.ruby-lang.org/en/documentation/",
+    "Rails": "https://guides.rubyonrails.org/",
+    "Sinatra": "http://sinatrarb.com/documentation.html",
+    "Hanami": "https://hanamirb.org/",
+    "RubyMotion": "http://www.rubymotion.com/docs/"
+  },
+  "html": {
+    "default": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "HTML5": "https://developer.mozilla.org/en-US/docs/Web/HTML/Overview_of_HTML5",
+    "HTML Forms": "https://developer.mozilla.org/en-US/docs/Learn/Forms",
+    "Web Components": "https://developer.mozilla.org/en-US/docs/Web/Web_Components"
+  },
+  "css": {
+    "default": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "CSS3": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3",
+    "Flexbox": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox",
+    "Grid": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout",
+    "Sass": "https://sass-lang.com/documentation"
+  }
+}
+
