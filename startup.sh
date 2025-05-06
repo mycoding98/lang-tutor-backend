@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ensure pip is updated
+# Ensue pip is updated
 python3 -m pip install --upgrade pip
 
 # Install dependencies from requirements.txt

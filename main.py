@@ -5,15 +5,16 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from languages import languages
 from utils import get_language_sources
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Access environment variables
+# Now you can access your environment variables
 MONGO_URI = os.getenv("MONGO_URI")
 SECRET_KEY = os.getenv("SECRET_KEY")
-
-# For debugging (you may remove this in production)
+# For debugging, to make sure the value is loaded
 print(f"Mongo URI: {MONGO_URI}")
 
 app = FastAPI()
@@ -34,36 +35,30 @@ def get_languages():
 def get_doc_source(language: str, topic: str = "default"):
     """Fetch the documentation URL for the given language/topic"""
     sources = get_language_sources()
-    language = language.lower()  # This ensures case insensitivity
-    
+    language = language.lower() # This is what caused so many issues. It was saying Python vs python
     lang_sources = sources.get(language)
   
+    # Logging for error
     if not lang_sources:
         raise HTTPException(status_code=404, detail="Language not found")
-    
+
     url = lang_sources.get(topic) or lang_sources.get("default")
     if not url:
         raise HTTPException(status_code=404, detail="Documentation source not found")
-    
+
     return {"url": url}
 
 @app.get("/health")
 async def health_check():
-    # 1. Check if MONGO_URI is available in environment variables
-    if MONGO_URI is None:
-        raise HTTPException(status_code=500, detail="MongoDB URI is not set")
+    # Ensure Mongo URI is set
+    if not MONGO_URI:
+        raise HTTPException(status_code=500, detail="MONGO_URI is not set")
 
-    # 2. Check if SECRET_KEY is available in environment variables
-    if SECRET_KEY is None:
-        raise HTTPException(status_code=500, detail="SECRET_KEY environment variable is missing")
-
-    # 3. Check external API service (optional, can be changed to relevant service)
+    # Attempt to connect and ping the MongoDB server
     try:
-        response = requests.get("https://some-external-service.com/status")
-        if response.status_code != 200:
-            raise HTTPException(status_code=500, detail="External service is down")
-    except requests.exceptions.RequestException:
-        raise HTTPException(status_code=500, detail="External service is down")
+        client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=2000)
+        client.admin.command("ping")
+    except ConnectionFailure as e:
+        raise HTTPException(status_code=500, detail=f"MongoDB connection failed: {str(e)}")
 
-    # If all checks pass
     return {"status": "healthy"}
